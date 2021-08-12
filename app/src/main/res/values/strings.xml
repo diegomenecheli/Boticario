@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Boticario</string>
+
+    <!-- Strings related to sign up -->
+    <string name="username">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="btn_sign_up">Entrar</string>
+    <string name="btn_sign_in">Criar conta</string>
+    <string name="btn_continue">Continuar</string>
 </resources>
