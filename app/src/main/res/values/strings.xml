@@ -7,4 +7,6 @@
     <string name="btn_sign_up">Entrar</string>
     <string name="btn_sign_in">Criar conta</string>
     <string name="btn_continue">Continuar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
