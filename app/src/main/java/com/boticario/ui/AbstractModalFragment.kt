@@ -1,6 +1,7 @@
 package com.boticario.ui
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
