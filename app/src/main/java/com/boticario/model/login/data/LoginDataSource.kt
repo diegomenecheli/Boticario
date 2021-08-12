@@ -1,12 +1,14 @@
 package com.boticario.model.login.data
 
 import android.content.Context
-import android.util.Log
 import com.boticario.model.login.Login
 import com.boticario.model.login.db.LoginDataBase
 import com.boticario.presenter.login.LoginHome
 import com.boticario.presenter.signup.SignUpHome
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginDataSource(context: Context) {
 
@@ -17,7 +19,6 @@ class LoginDataSource(context: Context) {
         var login: Login
         CoroutineScope(Dispatchers.IO).launch {
             login = loginRepository.getByUserNameAndPassword(email, password)
-            Log.d("xuxa", "getByUserNameAndPassword: $login")
             withContext(Dispatchers.Main) {
                 if (login != null) {
                     callback.onSuccess(login)

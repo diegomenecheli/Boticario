@@ -2,7 +2,6 @@ package com.boticario.ui.login.modal
 
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.viewbinding.ViewBinding

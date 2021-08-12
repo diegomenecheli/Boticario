@@ -1,17 +1,13 @@
 package com.boticario.ui.login.modal
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.viewbinding.ViewBinding
-import com.boticario.databinding.FragmentLoginModalBinding
 import com.boticario.databinding.FragmentSignUpModalBinding
 import com.boticario.model.login.Login
 import com.boticario.model.login.data.LoginDataSource
 import com.boticario.presenter.ViewHome
-import com.boticario.presenter.login.LoginHome
-import com.boticario.presenter.login.LoginPresenter
 import com.boticario.presenter.signup.SignUpPresenter
 import com.boticario.ui.AbstractModalFragment
 import com.boticario.ui.news.NewsActivity
