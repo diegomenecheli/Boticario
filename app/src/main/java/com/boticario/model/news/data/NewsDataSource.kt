@@ -10,7 +10,7 @@ class NewsDataSource {
 
     fun getAllNews(callback: NewsHome.Presenter) {
         GlobalScope.launch(Dispatchers.Main) {
-            val response = RetrofitInstance.api.getNews()
+            val response = RetrofitInstance.newsClient.getNews()
             if (response.isSuccessful) {
                 response.body()?.let { newsResponse ->
                     callback.onSuccess(newsResponse)
