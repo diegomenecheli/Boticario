@@ -16,7 +16,7 @@
         <activity android:name=".ui.news.NewsActivity" />
         <activity
             android:name=".ui.splash.SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

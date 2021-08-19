@@ -39,7 +39,7 @@ class NewsActivity : AbstractActivity(), ViewHome.View {
     }
 
     override fun showForecast(news: NewsResponse) {
-        binding.teste.text = news.news[0].user.name
+
     }
 
 
