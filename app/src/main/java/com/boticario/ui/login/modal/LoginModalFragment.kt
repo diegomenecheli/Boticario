@@ -11,7 +11,7 @@ import com.boticario.model.login.data.LoginDataSource
 import com.boticario.presenter.ViewHome
 import com.boticario.presenter.login.LoginPresenter
 import com.boticario.ui.AbstractModalFragment
-import com.boticario.ui.news.NewsActivity
+import com.boticario.ui.main.MainActivity
 
 class LoginModalFragment : AbstractModalFragment(), ViewHome.LoginView {
 
@@ -40,7 +40,7 @@ class LoginModalFragment : AbstractModalFragment(), ViewHome.LoginView {
     }
 
     override fun saveLogin(login: Login) {
-        val intent = Intent(requireContext(), NewsActivity::class.java)
+        val intent = Intent(requireContext(), MainActivity::class.java)
         intent.putExtra("login", login)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         intent.action = Intent.ACTION_MAIN

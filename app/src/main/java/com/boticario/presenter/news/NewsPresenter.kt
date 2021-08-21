@@ -11,7 +11,7 @@ class NewsPresenter(
 
 
     override fun onSuccess(newsResponse: NewsResponse) {
-        this.view.showForecast(newsResponse)
+        this.view.showNews(newsResponse)
     }
 
     override fun requestAll() {

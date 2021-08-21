@@ -10,6 +10,7 @@ import com.boticario.model.login.data.LoginDataSource
 import com.boticario.presenter.ViewHome
 import com.boticario.presenter.signup.SignUpPresenter
 import com.boticario.ui.AbstractModalFragment
+import com.boticario.ui.main.MainActivity
 import com.boticario.ui.news.NewsActivity
 
 class SignUpModalFragment : AbstractModalFragment(), ViewHome.SignUpView {
@@ -42,7 +43,7 @@ class SignUpModalFragment : AbstractModalFragment(), ViewHome.SignUpView {
     }
 
     override fun register(user: Login) {
-        val intent = Intent(requireContext(), NewsActivity::class.java)
+        val intent = Intent(requireContext(), MainActivity::class.java)
         intent.putExtra("login", user)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         intent.action = Intent.ACTION_MAIN

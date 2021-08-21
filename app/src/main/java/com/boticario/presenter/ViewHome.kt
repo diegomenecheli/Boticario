@@ -10,7 +10,7 @@ interface ViewHome {
         fun showProgressBar()
         fun showFailure(message: String)
         fun hideProgressBar()
-        fun showForecast(news: NewsResponse)
+        fun showNews(news: NewsResponse)
     }
 
     interface LoginView {

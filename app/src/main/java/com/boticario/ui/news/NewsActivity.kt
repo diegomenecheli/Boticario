@@ -2,7 +2,10 @@ package com.boticario.ui.news
 
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
+import com.boticario.adapter.NewsAdapter
 import com.boticario.databinding.ActivityNewsBinding
 import com.boticario.model.news.NewsResponse
 import com.boticario.model.news.data.NewsDataSource
@@ -11,6 +14,10 @@ import com.boticario.presenter.news.NewsPresenter
 import com.boticario.ui.AbstractActivity
 
 class NewsActivity : AbstractActivity(), ViewHome.View {
+
+    private val mainAdapter by lazy {
+        NewsAdapter()
+    }
 
     private lateinit var presenter: NewsPresenter
     private lateinit var binding: ActivityNewsBinding
@@ -24,6 +31,14 @@ class NewsActivity : AbstractActivity(), ViewHome.View {
         val dataSource = NewsDataSource()
         presenter = NewsPresenter(this, dataSource)
         presenter.requestAll()
+        configRecycler()
+    }
+
+    private fun configRecycler() {
+        with(binding.recycler) {
+            adapter = mainAdapter
+            layoutManager = LinearLayoutManager(this@NewsActivity)
+        }
     }
 
     override fun showProgressBar() {
@@ -38,8 +53,8 @@ class NewsActivity : AbstractActivity(), ViewHome.View {
         binding.loading.visibility = View.GONE
     }
 
-    override fun showForecast(news: NewsResponse) {
-
+    override fun showNews(news: NewsResponse) {
+        mainAdapter.differ.submitList(news.news)
     }
 
 

@@ -14,8 +14,8 @@ class NewsDataSource {
             if (response.isSuccessful) {
                 response.body()?.let { newsResponse ->
                     callback.onSuccess(newsResponse)
+                    callback.onComplete()
                 }
-                callback.onComplete()
             } else {
                 callback.onError(response.message())
                 callback.onComplete()
