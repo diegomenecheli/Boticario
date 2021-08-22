@@ -12,4 +12,5 @@
     <string name="btn_continue">Continuar</string>
     <string name="main_page">Página principal</string>
     <string name="boticario_news">Novidades Boticário</string>
+    <string name="logoff">Sair</string>
 </resources>

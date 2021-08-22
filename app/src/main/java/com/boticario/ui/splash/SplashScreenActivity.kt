@@ -22,7 +22,6 @@ class SplashScreenActivity : AbstractActivity() {
         splashScreen()
     }
 
-
     private fun splashScreen() {
         binding.ivSplash.alpha = 0f
         binding.ivSplash.animate().setDuration(800).alpha(1f).withEndAction {

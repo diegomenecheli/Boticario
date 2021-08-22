@@ -12,9 +12,11 @@ import com.boticario.presenter.signup.SignUpPresenter
 import com.boticario.ui.AbstractModalFragment
 import com.boticario.ui.main.MainActivity
 import com.boticario.ui.news.NewsActivity
+import com.boticario.utils.SessionManager
 
 class SignUpModalFragment : AbstractModalFragment(), ViewHome.SignUpView {
 
+    private lateinit var session: SessionManager
     private lateinit var binding: FragmentSignUpModalBinding
     private lateinit var presenter: SignUpPresenter
     override fun getLayout(): ViewBinding {
@@ -23,6 +25,7 @@ class SignUpModalFragment : AbstractModalFragment(), ViewHome.SignUpView {
     }
 
     override fun onInject() {
+        session =  SessionManager(requireContext())
         val dataSource = LoginDataSource(
             requireContext()
         )
@@ -44,6 +47,7 @@ class SignUpModalFragment : AbstractModalFragment(), ViewHome.SignUpView {
 
     override fun register(user: Login) {
         val intent = Intent(requireContext(), MainActivity::class.java)
+        session.createLoginSession(user.name, user.userName);
         intent.putExtra("login", user)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         intent.action = Intent.ACTION_MAIN

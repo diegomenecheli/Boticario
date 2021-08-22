@@ -12,9 +12,12 @@ import com.boticario.presenter.ViewHome
 import com.boticario.presenter.login.LoginPresenter
 import com.boticario.ui.AbstractModalFragment
 import com.boticario.ui.main.MainActivity
+import com.boticario.utils.SessionManager
+
 
 class LoginModalFragment : AbstractModalFragment(), ViewHome.LoginView {
 
+    private lateinit var session: SessionManager
     private lateinit var binding: FragmentLoginModalBinding
     private lateinit var presenter: LoginPresenter
     override fun getLayout(): ViewBinding {
@@ -23,6 +26,7 @@ class LoginModalFragment : AbstractModalFragment(), ViewHome.LoginView {
     }
 
     override fun onInject() {
+        session =  SessionManager(requireContext())
         val dataSource = LoginDataSource(
             requireContext()
         )
@@ -41,6 +45,7 @@ class LoginModalFragment : AbstractModalFragment(), ViewHome.LoginView {
 
     override fun saveLogin(login: Login) {
         val intent = Intent(requireContext(), MainActivity::class.java)
+        session.createLoginSession(login.name, login.userName);
         intent.putExtra("login", login)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         intent.action = Intent.ACTION_MAIN
