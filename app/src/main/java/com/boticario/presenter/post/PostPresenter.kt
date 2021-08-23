@@ -30,10 +30,6 @@ class PostPresenter(
         this.dataSource.getAllPosts(this)
     }
 
-    fun deletePost(post: PostsResponseItem) {
-        this.dataSource.deletePost(post)
-    }
-
 
     fun savePost(post: PostsResponseItem) {
         this.dataSource.makePost(post, this)

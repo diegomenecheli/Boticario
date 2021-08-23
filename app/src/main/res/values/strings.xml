@@ -15,4 +15,14 @@
     <string name="logoff">Sair</string>
     <string name="new_post">O que está pensando?</string>
     <string name="publish">Publicar</string>
+
+    <!-- Strings related to validation -->
+    <string name="validation_no_password">Preencha a senha</string>
+    <string name="validation_invalid_password">Senha inválida. Sua senha deve ter no mínimo 6 dígitos.</string>
+    <string name="validation_no_name">Preencha um nome</string>
+    <string name="validation_no_email">Preencha um email</string>
+    <string name="validation_invalid_email">Este e-mail não está correto. Preencha um email válido.</string>
+    <string name="validation_taken_email">Este e-mail já está cadastrado. Preencha outro e-mail.</string>
+
+
 </resources>

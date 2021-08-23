@@ -3,7 +3,6 @@ package com.boticario.ui.main
 import android.content.Intent
 import android.view.MenuItem
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -39,16 +38,18 @@ class MainActivity : AbstractActivity(), ViewHome.PostView {
     }
 
     override fun onInject() {
+        session = SessionManager(this)
         configMenu()
         val dataSource = PostDataSource(this)
         presenter = PostPresenter(this, dataSource)
         presenter.getAll()
+
         configRecycler()
+
     }
 
-    fun configMenu(){
+    fun configMenu() {
         bindingHeader = NavHeaderBinding.inflate(layoutInflater)
-        session = SessionManager(this)
         toggle =
             ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
         binding.drawerLayout.addDrawerListener(toggle)
@@ -83,9 +84,7 @@ class MainActivity : AbstractActivity(), ViewHome.PostView {
     }
 
     private fun loadUsersInformation() {
-
         val user = session.getUserDetails()
-
         bindingHeader.usernameHeader
         bindingHeader.nameHeader.text = user!![session.KEY_NAME]
         bindingHeader.usernameHeader.text = user[session.KEY_EMAIL]
@@ -104,12 +103,13 @@ class MainActivity : AbstractActivity(), ViewHome.PostView {
     }
 
     override fun registerPost(post: PostsResponseItem) {
-
+        presenter.savePost(post)
     }
 
     override fun getAll(post: List<PostsResponseItem>) {
         postAdapter.differ.submitList(post)
     }
+
 
     override fun hideProgressBar() {
         binding.loading.visibility = View.GONE

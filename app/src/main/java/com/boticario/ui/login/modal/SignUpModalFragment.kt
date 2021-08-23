@@ -11,8 +11,8 @@ import com.boticario.presenter.ViewHome
 import com.boticario.presenter.signup.SignUpPresenter
 import com.boticario.ui.AbstractModalFragment
 import com.boticario.ui.main.MainActivity
-import com.boticario.ui.news.NewsActivity
 import com.boticario.utils.SessionManager
+import com.boticario.utils.Validation
 
 class SignUpModalFragment : AbstractModalFragment(), ViewHome.SignUpView {
 
@@ -25,19 +25,23 @@ class SignUpModalFragment : AbstractModalFragment(), ViewHome.SignUpView {
     }
 
     override fun onInject() {
-        session =  SessionManager(requireContext())
+        session = SessionManager(requireContext())
         val dataSource = LoginDataSource(
             requireContext()
         )
         presenter = SignUpPresenter(this, dataSource)
         binding.btnSignUp.setOnClickListener {
-            val login =
-                Login(
-                    binding.username.text.toString(),
-                    binding.password.text.toString(),
-                    binding.name.text.toString()
-                )
-            presenter.registerUser(login)
+            if (Validation.isValidUserName(requireContext(), binding.name.text.toString()) &&
+                Validation.isValidEmail(requireContext(), binding.username.text.toString()) &&
+                Validation.isValidPassword(requireContext(), binding.password.text.toString())) {
+                val login =
+                    Login(
+                        binding.username.text.toString(),
+                        binding.password.text.toString(),
+                        binding.name.text.toString()
+                    )
+                presenter.registerUser(login)
+            }
         }
     }
 

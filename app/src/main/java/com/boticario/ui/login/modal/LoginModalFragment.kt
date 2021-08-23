@@ -13,6 +13,7 @@ import com.boticario.presenter.login.LoginPresenter
 import com.boticario.ui.AbstractModalFragment
 import com.boticario.ui.main.MainActivity
 import com.boticario.utils.SessionManager
+import com.boticario.utils.Validation
 
 
 class LoginModalFragment : AbstractModalFragment(), ViewHome.LoginView {
@@ -32,10 +33,13 @@ class LoginModalFragment : AbstractModalFragment(), ViewHome.LoginView {
         )
         presenter = LoginPresenter(this, dataSource)
         binding.btnSignUp.setOnClickListener {
-            presenter.validateUser(
-                binding.name.text.toString(),
-                binding.password.text.toString()
-            )
+            if (Validation.isValidEmail(requireContext(), binding.name.text.toString()) &&
+                Validation.isValidPassword(requireContext(), binding.password.text.toString())) {
+                presenter.validateUser(
+                    binding.name.text.toString(),
+                    binding.password.text.toString()
+                )
+            }
         }
     }
 

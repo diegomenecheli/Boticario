@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.boticario.databinding.PostItemBinding
+import com.boticario.databinding.MyPostItemBinding
 import com.boticario.model.posts.PostsResponseItem
 
-class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class MyPostAdapter : RecyclerView.Adapter<MyPostAdapter.PostViewHolder>() {
 
-    inner class PostViewHolder(private val itemBinding: PostItemBinding) :
+    inner class PostViewHolder(private val itemBinding: MyPostItemBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(post: PostsResponseItem) {
             itemBinding.namePost.text = post.name
@@ -48,12 +48,16 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val itemBinding =
-            PostItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            MyPostItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PostViewHolder(itemBinding)
     }
 
 
     override fun getItemCount(): Int = differ.currentList.size
 
+    private var onItemClickListener: ((PostsResponseItem) -> Unit)? = null
 
+    fun setOnClickListener(listener: (PostsResponseItem) -> Unit) {
+        onItemClickListener = listener
+    }
 }

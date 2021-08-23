@@ -28,13 +28,6 @@ class PostDataSource (context: Context) {
         }
     }
 
-    fun deletePost(post: PostsResponseItem?){
-        GlobalScope.launch(Dispatchers.Main) {
-            post?.let { postDelete ->
-                postRepository.delete(postDelete)
-            }
-        }
-    }
 
     fun getAllPosts(callback: PostHome.Presenter){
         GlobalScope.launch(Dispatchers.Main) {
@@ -50,5 +43,6 @@ class PostDataSource (context: Context) {
             }
         }
     }
+
 
 }
