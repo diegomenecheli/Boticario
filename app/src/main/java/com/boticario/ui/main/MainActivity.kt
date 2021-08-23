@@ -12,7 +12,6 @@ import com.boticario.databinding.NavHeaderBinding
 import com.boticario.ui.AbstractActivity
 import com.boticario.ui.news.NewsActivity
 import com.boticario.utils.SessionManager
-import kotlin.math.log
 
 
 class MainActivity : AbstractActivity() {
@@ -41,8 +40,6 @@ class MainActivity : AbstractActivity() {
             when (it.itemId) {
                 R.id.nav_home -> {
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    val qrCodeActivity = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(qrCodeActivity)
                 }
                 R.id.nav_search -> {
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -60,7 +57,10 @@ class MainActivity : AbstractActivity() {
     private fun loadUsersInformation() {
         val user = session.getUserDetails()
         bindingHeader.nameHeader.text = user!![session.KEY_NAME]
+        Log.d("xuxa", "loadUsersInformation: " + user!![session.KEY_NAME])
         bindingHeader.usernameHeader.text = user[session.KEY_EMAIL]
+        Log.d("xuxa", "loadUsersInformation: " + user!![session.KEY_EMAIL])
+
         bindingHeader.usernameHeader.text
     }
 
