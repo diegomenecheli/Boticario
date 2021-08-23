@@ -24,7 +24,7 @@ class SplashScreenActivity : AbstractActivity() {
 
     private fun splashScreen() {
         binding.ivSplash.alpha = 0f
-        binding.ivSplash.animate().setDuration(800).alpha(1f).withEndAction {
+        binding.ivSplash.animate().setDuration(1400).alpha(1f).withEndAction {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)

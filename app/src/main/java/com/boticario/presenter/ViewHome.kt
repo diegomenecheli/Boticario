@@ -35,6 +35,5 @@ interface ViewHome {
         fun getAll(post: List<PostsResponseItem>)
         fun hideProgressBar()
         fun showProgressBar()
-
     }
 }

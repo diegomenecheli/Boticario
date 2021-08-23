@@ -10,10 +10,7 @@
     <string name="btn_sign_up">Entrar</string>
     <string name="btn_sign_in">Criar conta</string>
     <string name="btn_continue">Continuar</string>
-    <string name="main_page">Página principal</string>
-    <string name="boticario_news">Novidades Boticário</string>
     <string name="logoff">Sair</string>
-    <string name="new_post">O que está pensando?</string>
     <string name="publish">Publicar</string>
 
     <!-- Strings related to validation -->
@@ -24,5 +21,10 @@
     <string name="validation_invalid_email">Este e-mail não está correto. Preencha um email válido.</string>
     <string name="validation_taken_email">Este e-mail já está cadastrado. Preencha outro e-mail.</string>
 
+    <!-- Strings -->
+    <string name="new_post">O que está pensando?</string>
+    <string name="boticario_news">Novidades Boticário</string>
+    <string name="main_page">Página principal</string>
+    <string name="title_post">"Microblogging</string>
 
 </resources>
