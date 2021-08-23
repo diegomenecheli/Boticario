@@ -26,6 +26,7 @@ class PostPresenter(
     }
 
     fun getAll() {
+        this.view.showProgressBar()
         this.dataSource.getAllPosts(this)
     }
 

@@ -3,6 +3,7 @@ package com.boticario.model.posts.data
 import android.content.Context
 import com.boticario.model.posts.PostsResponseItem
 import com.boticario.model.posts.db.PostDataBase
+import com.boticario.network.RetrofitInstance
 import com.boticario.presenter.post.PostHome
 import kotlinx.coroutines.*
 
@@ -36,12 +37,16 @@ class PostDataSource (context: Context) {
     }
 
     fun getAllPosts(callback: PostHome.Presenter){
-        var allPosts: List<PostsResponseItem>
-        CoroutineScope(Dispatchers.IO).launch {
-            allPosts = postRepository.getAll()
-
-            withContext(Dispatchers.Main){
-                callback.onSuccessShow(allPosts)
+        GlobalScope.launch(Dispatchers.Main) {
+            val response = RetrofitInstance.commentClient.getPosts()
+            if (response.isSuccessful) {
+                response.body()?.let { newsResponse ->
+                    callback.onSuccessShow(newsResponse)
+                    callback.onComplete()
+                }
+            } else {
+                callback.onError(response.message())
+                callback.onComplete()
             }
         }
     }

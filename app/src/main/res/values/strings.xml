@@ -13,4 +13,6 @@
     <string name="main_page">Página principal</string>
     <string name="boticario_news">Novidades Boticário</string>
     <string name="logoff">Sair</string>
+    <string name="new_post">O que está pensando?</string>
+    <string name="publish">Publicar</string>
 </resources>
